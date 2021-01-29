@@ -15,13 +15,17 @@ class LoginScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: BlocProvider<LoginBloc>(
-        create: (context) {
-          final authService = RepositoryProvider.of<AuthService>(context);
-          final authBloc = BlocProvider.of<AuthBloc>(context);
-          return LoginBloc(authBloc, authService);
-        },
-        child: LoginForm(),
+      body: Center(
+        child: BlocProvider<LoginBloc>(
+          create: (context) {
+            final authService = RepositoryProvider.of<AuthService>(context);
+            final authBloc = BlocProvider.of<AuthBloc>(context);
+            return LoginBloc(authBloc, authService);
+          },
+          child: SingleChildScrollView(
+            child: LoginForm(),
+          ),
+        ),
       ),
     );
   }

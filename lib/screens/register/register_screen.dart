@@ -13,12 +13,16 @@ class RegisterScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: BlocProvider<RegisterBloc>(
-        create: (context) {
-          final authService = RepositoryProvider.of<AuthService>(context);
-          return RegisterBloc(authService);
-        },
-        child: RegisterForm(),
+      body: Center(
+        child: BlocProvider<RegisterBloc>(
+          create: (context) {
+            final authService = RepositoryProvider.of<AuthService>(context);
+            return RegisterBloc(authService);
+          },
+          child: SingleChildScrollView(
+            child: RegisterForm(),
+          ),
+        ),
       ),
     );
   }
